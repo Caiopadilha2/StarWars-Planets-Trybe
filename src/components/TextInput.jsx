@@ -2,13 +2,10 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function TextInput() {
-  const { inputText, setInputText } = useContext(PlanetsContext);
+  const { setTextFilter } = useContext(PlanetsContext);
 
   const handleChange = ({ target }) => {
-    setInputText({ ...inputText,
-      filterByName: {
-        name: target.value,
-      } });
+    setTextFilter(target.value);
   };
 
   return (

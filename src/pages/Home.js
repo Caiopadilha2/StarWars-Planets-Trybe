@@ -1,22 +1,9 @@
-import React, { useContext, useEffect } from 'react';
-import Table from '../components/Table';
+import React from 'react';
 import TextInput from '../components/TextInput';
+import Table from '../components/Table';
 import ValueInput from '../components/ValueInput';
-import PlanetsContext from '../context/PlanetsContext';
-import getPlanets from '../services/API';
 
 function Home() {
-  const { setPlanets } = useContext(PlanetsContext);
-
-  useEffect(() => {
-    const requestApi = async () => {
-      const planetsRequest = await getPlanets();
-      setPlanets(planetsRequest);
-      // console.log(planetsRequest);
-    };
-    requestApi();
-  }, [setPlanets]);
-
   return (
     <>
       <TextInput />
