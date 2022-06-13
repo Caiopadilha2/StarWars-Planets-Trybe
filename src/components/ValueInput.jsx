@@ -24,6 +24,14 @@ function ValueInput() {
     setNumericFilters([...numericFilters, newNumericFilter]);
   };
 
+  const arrFilterType = [
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ];
+
   return (
     <div>
       <select
@@ -31,11 +39,12 @@ function ValueInput() {
         onChange={ ({ target }) => setFilterType(target.value) }
         value={ filterType }
       >
-        <option>population</option>
+        {arrFilterType.map((filter, index) => <option key={ index }>{filter}</option>)}
+        {/* <option>population</option>
         <option>orbital_period</option>
         <option>diameter</option>
         <option>rotation_period</option>
-        <option>surface_water</option>
+        <option>surface_water</option> */}
       </select>
       <select
         data-testid="comparison-filter"
