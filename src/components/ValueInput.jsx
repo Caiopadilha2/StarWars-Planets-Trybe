@@ -97,14 +97,13 @@ function ValueInput() {
           </div>
         ),
       )}
-      {numericFilters.length > 0
-      && <button
+      <button
         type="button"
         data-testid="button-remove-filters"
         onClick={ deleteAllFilters }
       >
         Apagar filtros
-         </button>}
+      </button>
     </div>
   );
 }
