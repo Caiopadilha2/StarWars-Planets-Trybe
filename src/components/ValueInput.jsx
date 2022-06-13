@@ -30,6 +30,18 @@ function ValueInput() {
     // console.log(newNumericFilter);
     setNumericFilters([...numericFilters, newNumericFilter]);
     selectOptionFilter();
+    setValue(0);
+  };
+
+  const handleDeleteFilter = (index) => {
+    const newFilters = numericFilters.filter(
+      (_filter, filterIndex) => filterIndex !== index,
+    );
+    setNumericFilters(newFilters);
+  };
+
+  const deleteAllFilters = () => {
+    setNumericFilters([]);
   };
 
   return (
@@ -74,11 +86,25 @@ function ValueInput() {
       </button>
       {numericFilters.map(
         (filter, index) => (
-          <p key={ `${filter.filterType}-${index}` }>
-            {`${filter.filterType} ${filter.operator} ${filter.value}`}
-          </p>
+          <div
+            key={ `${filter.filterType}-${index}` }
+            data-testid="filter"
+          >
+            <p>
+              {`${filter.filterType} ${filter.operator} ${filter.value}`}
+            </p>
+            <button type="button" onClick={ () => handleDeleteFilter(index) }>X</button>
+          </div>
         ),
       )}
+      {numericFilters.length > 0
+      && <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ deleteAllFilters }
+      >
+        Apagar filtros
+         </button>}
     </div>
   );
 }
