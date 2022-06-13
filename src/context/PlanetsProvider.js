@@ -12,6 +12,16 @@ function PlanetsProvider({ children }) {
   const [operator, setOperator] = useState('maior que');
   const [value, setValue] = useState(0);
 
+  const arrFilterType = [
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ];
+
+  const [arrayOptions, setArrayOptions] = useState(arrFilterType);
+
   useEffect(() => {
     const fetchPlanets = async () => {
       const planetsRequest = await getPlanets();
@@ -36,6 +46,8 @@ function PlanetsProvider({ children }) {
     setValue,
     numericFilters,
     setNumericFilters,
+    arrayOptions,
+    setArrayOptions,
   };
 
   return (

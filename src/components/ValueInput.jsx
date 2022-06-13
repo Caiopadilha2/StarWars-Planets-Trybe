@@ -11,7 +11,14 @@ function ValueInput() {
     setValue,
     numericFilters,
     setNumericFilters,
+    arrayOptions,
+    setArrayOptions,
   } = useContext(PlanetsContext);
+
+  const selectOptionFilter = () => {
+    const newArrayOptions = arrayOptions.filter((filter) => filter !== filterType);
+    setArrayOptions(newArrayOptions);
+  };
 
   const handleNumericFilter = () => {
     // console.log(filterType, operator, value);
@@ -22,15 +29,8 @@ function ValueInput() {
     };
     // console.log(newNumericFilter);
     setNumericFilters([...numericFilters, newNumericFilter]);
+    selectOptionFilter();
   };
-
-  const arrFilterType = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ];
 
   return (
     <div>
@@ -39,7 +39,9 @@ function ValueInput() {
         onChange={ ({ target }) => setFilterType(target.value) }
         value={ filterType }
       >
-        {arrFilterType.map((filter, index) => <option key={ index }>{filter}</option>)}
+        {arrayOptions.map((filter, index) => (
+          <option key={ index } value={ filter }>{filter}</option>
+        ))}
         {/* <option>population</option>
         <option>orbital_period</option>
         <option>diameter</option>
