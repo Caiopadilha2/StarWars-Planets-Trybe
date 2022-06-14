@@ -97,13 +97,15 @@ function ValueInput() {
           </div>
         ),
       )}
-      <button
-        type="button"
-        data-testid="button-remove-filters"
-        onClick={ deleteAllFilters }
-      >
-        Apagar filtros
-      </button>
+      {numericFilters.length > 0 && (
+        <button
+          type="button"
+          data-testid="button-remove-filters"
+          onClick={ deleteAllFilters }
+        >
+          Apagar filtros
+        </button>)}
+
     </div>
   );
 }
